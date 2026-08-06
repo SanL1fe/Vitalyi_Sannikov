@@ -1,0 +1,2198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+    <title>Виталий Санников — Врач-реабилитолог, тренер, нутрициолог</title>
+    <meta name="description" content="Виталий Санников — врач-реабилитолог, фитнес-тренер и нутрициолог. Восстановление после травм, персональные тренировки, планы питания. Москва."/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+/* ===== PRELOADER ===== */
+#preloader{position:fixed;inset:0;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--bg);transition:opacity 1.2s cubic-bezier(0.4,0,0.2,1),visibility 1.2s}
+#preloader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+#preloader video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.4}
+#preloader .preloader-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,0.3) 0%,rgba(10,10,10,0.7) 60%,rgba(10,10,10,0.95) 100%);z-index:1}
+[data-theme="light"] #preloader .preloader-overlay{background:linear-gradient(180deg,rgba(245,243,239,0.3) 0%,rgba(245,243,239,0.7) 60%,rgba(245,243,239,0.95) 100%)}
+#preloader .preloader-content{position:relative;z-index:2;text-align:center;display:flex;flex-direction:column;align-items:center;gap:2rem}
+.preloader-pulse{width:80px;height:80px;position:relative}
+.preloader-pulse::before,.preloader-pulse::after{content:'';position:absolute;border-radius:50%;border:2px solid rgba(201,162,39,0.4);animation:pulseRing 2s ease-out infinite}
+.preloader-pulse::before{inset:0;animation-delay:0s}
+.preloader-pulse::after{inset:-15px;border-color:rgba(201,162,39,0.2);animation-delay:0.5s}
+.preloader-pulse-inner{position:absolute;inset:20px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-dark));animation:pulseInner 2s ease-in-out infinite}
+@keyframes pulseRing{0%{transform:scale(0.8);opacity:1}100%{transform:scale(1.5);opacity:0}}
+@keyframes pulseInner{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+.preloader-name{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.5rem);font-weight:700;color:var(--text);letter-spacing:2px;opacity:0;animation:fadeInUp 1s ease 0.5s forwards}
+.preloader-subtitle{font-size:clamp(0.9rem,2vw,1.1rem);color:var(--accent);letter-spacing:4px;text-transform:uppercase;opacity:0;animation:fadeInUp 1s ease 0.8s forwards}
+[data-theme="light"] .preloader-name{color:var(--text)}
+[data-theme="light"] .preloader-subtitle{color:var(--accent)}
+.preloader-skip{margin-top:1rem;padding:12px 32px;border:1px solid rgba(201,162,39,0.5);background:rgba(201,162,39,0.1);color:var(--accent);font-family:var(--font-body);font-size:0.85rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:50px;transition:all 0.3s ease;opacity:0;animation:fadeInUp 1s ease 1.2s forwards}
+.preloader-skip:hover{background:rgba(201,162,39,0.25);border-color:var(--accent);transform:translateY(-2px)}
+.preloader-scroll-hint{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;z-index:2;opacity:0;animation:fadeInUp 1s ease 1.5s forwards}
+.preloader-scroll-hint span{font-size:0.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--text-muted)}
+.preloader-scroll-hint .scroll-arrow{width:20px;height:30px;border:1px solid var(--line);border-radius:10px;position:relative}
+.preloader-scroll-hint .scroll-arrow::after{content:'';position:absolute;top:6px;left:50%;transform:translateX(-50%);width:4px;height:8px;background:var(--accent);border-radius:2px;animation:scrollBounce 1.5s ease-in-out infinite}
+@keyframes scrollBounce{0%,100%{top:6px;opacity:1}50%{top:16px;opacity:0.3}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* ===== CSS ЧАСТЬ 1: Переменные + Hero + Nav + Animations ===== */
+:root {
+    --bg: #0a0a0a;
+    --bg-light: #111111;
+    --bg-card: #141414;
+    --text: #ffffff;
+    --text-muted: rgba(255,255,255,0.5);
+    --accent: #c9a227;
+    --accent-light: #e8c547;
+    --accent-dark: #a07d1a;
+    --line: rgba(201, 162, 39, 0.15);
+    --font-display: 'Oswald', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+[data-theme="light"] {
+    --bg: #f5f3ef;
+    --bg-light: #ebe8e2;
+    --bg-card: #ffffff;
+    --text: #1a1a1a;
+    --text-muted: rgba(26,26,26,0.55);
+    --accent: #b8921a;
+    --accent-light: #d4a832;
+    --accent-dark: #8f7314;
+    --line: rgba(184, 146, 26, 0.2);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--bg); color: var(--text); overflow-x: hidden; line-height: 1.6; }
+body, .section, #preloader, .mobile-menu, .service-card, .category-item, .testimonial-card, .about__image, .gallery__item, .process-step, .contact__link, .footer, .nav__menu, .nav__logo, .nav__phone, .hero__social-link, .theme-toggle, .testimonials__btn, .preloader-skip, .preloader-name, .preloader-subtitle, .preloader-overlay, .hero__bg-gradient {
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+img { max-width: 100%; display: block; height: auto; }
+
+/* ===== ENTRANCE ANIMATIONS ===== */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(40px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.anim-fade-up { opacity: 0; animation: fadeInUp 0.8s cubic-bezier(0.8, 0, 0.2, 1) forwards; }
+.anim-fade { opacity: 0; animation: fadeIn 0.6s ease forwards; }
+.anim-scale { opacity: 0; animation: scaleIn 1s ease forwards; }
+.anim-slide-right { opacity: 0; animation: slideInRight 0.7s ease forwards; }
+
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+.delay-4 { animation-delay: 0.8s; }
+.delay-5 { animation-delay: 1.0s; }
+.delay-6 { animation-delay: 1.2s; }
+
+/* ===== SCROLL REVEAL ===== */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.8, 0, 0.2, 1);
+}
+.reveal-on-scroll.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== HERO (исправлено: pointer-events) ===== */
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    z-index: 10;
+    overflow: hidden;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Three.js canvas overlay */
+.hero__three-canvas {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hero__bg-gradient {
+    position: absolute; inset: 0;
+    background: 
+        radial-gradient(ellipse at 20% 50%, rgba(201, 162, 39, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(201, 162, 39, 0.05) 0%, transparent 40%),
+        linear-gradient(180deg, #0a0a0a 0%, #111111 100%);
+    z-index: 2;
+    pointer-events: none;
+}
+[data-theme="light"] .hero__bg-gradient {
+    background: 
+        radial-gradient(ellipse at 20% 50%, rgba(184, 146, 26, 0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(184, 146, 26, 0.04) 0%, transparent 40%),
+        linear-gradient(180deg, #f5f3ef 0%, #ebe8e2 100%);
+}
+[data-theme="light"] .hero__athlete img {
+    filter: contrast(1.05) brightness(0.95) drop-shadow(0 10px 30px rgba(0,0,0,0.1));
+}
+
+.hero__athlete {
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    height: 85vh; width: auto;
+    opacity: 0.95;
+    filter: contrast(1.05) brightness(0.95);
+    z-index: 5;
+    pointer-events: none;
+}
+.hero__athlete img {
+    height: 100%; width: auto;
+    object-fit: contain;
+    object-position: bottom center;
+    mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+}
+
+/* Navigation */
+.nav {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 40px;
+    pointer-events: auto;
+}
+.nav__menu {
+    display: flex; align-items: center; gap: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 8px 16px;
+    border-radius: 100px;
+    pointer-events: auto;
+}
+.nav__menu:hover { background: rgba(201, 162, 39, 0.1); }
+.nav__menu-icon { width: 24px; height: 24px; position: relative; }
+.nav__menu-icon span {
+    display: block; width: 100%; height: 1.5px;
+    background: var(--text); position: absolute;
+    transition: all 0.3s ease;
+}
+.nav__menu-icon span:nth-child(1) { top: 6px; }
+.nav__menu-icon span:nth-child(2) { top: 12px; width: 70%; }
+.nav__menu-icon span:nth-child(3) { top: 18px; }
+.nav__menu:hover .nav__menu-icon span:nth-child(2) { width: 100%; }
+.nav__menu-text { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; font-weight: 500; }
+
+.nav__logo {
+    position: absolute; left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-display);
+    font-size: 14px; font-weight: 600;
+    letter-spacing: 4px; text-transform: uppercase;
+    color: var(--accent);
+    transition: all 0.3s ease;
+    padding: 8px 20px; border-radius: 100px;
+    pointer-events: auto;
+}
+.nav__logo:hover { background: rgba(201, 162, 39, 0.1); letter-spacing: 5px; }
+
+.nav__phone {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none; color: var(--text);
+    font-size: 10px; text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: all 0.3s ease;
+    padding: 8px 16px; border-radius: 100px;
+    pointer-events: auto;
+}
+.nav__phone:hover { background: rgba(201, 162, 39, 0.1); }
+.nav__phone-icon {
+    width: 32px; height: 32px; border-radius: 50%;
+    border: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    transition: all 0.3s ease;
+}
+.nav__phone:hover .nav__phone-icon { border-color: var(--accent); transform: rotate(15deg); }
+
+.nav__right { display: flex; align-items: center; gap: 12px; }
+
+.theme-toggle {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--text);
+    font-size: 16px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.3s ease;
+    padding: 0;
+    flex-shrink: 0;
+}
+.theme-toggle:hover {
+    border-color: var(--accent);
+    background: rgba(201, 162, 39, 0.1);
+    transform: rotate(20deg) scale(1.1);
+}
+[data-theme="light"] .theme-toggle:hover {
+    background: rgba(184, 146, 26, 0.12);
+}
+
+/* Hero Content */
+.hero__content {
+    position: relative; z-index: 10;
+    width: 100%; height: 100vh;
+    pointer-events: none;
+}
+.hero__line {
+    position: absolute; top: 80px;
+    left: 40px; right: 40px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--line) 20%, var(--line) 80%, transparent 100%);
+}
+.hero__subtitle {
+    position: absolute; top: 100px; left: 40px;
+    font-size: 10px; text-transform: uppercase;
+    letter-spacing: 2px; color: var(--text-muted);
+    line-height: 1.8;
+}
+.hero__title-group {
+    position: absolute;
+    top: 50%; left: 40px;
+    transform: translateY(-50%);
+}
+.hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 5vw, 72px);
+    font-weight: 700; line-height: 1;
+    letter-spacing: -2px; text-transform: uppercase;
+}
+.hero__title-accent {
+    color: var(--accent); display: block;
+    text-shadow: 0 0 40px rgba(201, 162, 39, 0.3);
+}
+
+.hero__stats {
+    position: absolute;
+    right: 40px; top: 50%;
+    transform: translateY(-50%);
+    text-align: right;
+}
+.hero__stat { margin-bottom: 40px; }
+.hero__stat-value {
+    font-family: var(--font-display);
+    font-size: clamp(48px, 6vw, 98px);
+    font-weight: 400; line-height: 1;
+    letter-spacing: -3px; color: var(--accent);
+    text-shadow: 0 0 30px rgba(201, 162, 39, 0.2);
+}
+.hero__stat-label {
+    font-size: 10px; text-transform: uppercase;
+    letter-spacing: 2px; color: var(--text-muted);
+    margin-top: 8px;
+}
+.hero__stat-line {
+    width: 200px; height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--line) 50%, var(--accent) 100%);
+    margin: 16px 0;
+    transition: width 0.5s ease;
+}
+.hero__stat:hover .hero__stat-line { width: 250px; }
+
+.hero__cta {
+    position: absolute; bottom: 60px; left: 40px;
+    display: flex; align-items: center; gap: 16px;
+    pointer-events: auto; cursor: pointer;
+    text-decoration: none; color: var(--text);
+    transition: all 0.4s ease;
+    padding: 12px 20px; border-radius: 100px;
+}
+.hero__cta:hover { background: rgba(201, 162, 39, 0.08); }
+.hero__cta-circle {
+    width: 56px; height: 56px; border-radius: 50%;
+    border: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    font-size: 18px; position: relative; overflow: hidden;
+}
+.hero__cta-circle::before {
+    content: ''; position: absolute; inset: 0;
+    background: var(--accent); border-radius: 50%;
+    transform: scale(0);
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.hero__cta:hover .hero__cta-circle {
+    border-color: var(--accent); transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(201, 162, 39, 0.3);
+}
+.hero__cta:hover .hero__cta-circle::before { transform: scale(1); }
+.hero__cta-circle span { position: relative; z-index: 1; transition: color 0.3s; }
+.hero__cta:hover .hero__cta-circle span { color: var(--bg); }
+.hero__cta-text {
+    font-size: 11px; text-transform: uppercase;
+    letter-spacing: 1.5px; line-height: 1.4;
+}
+
+.hero__social {
+    position: absolute; bottom: 60px; right: 40px;
+    display: flex; gap: 20px;
+}
+.hero__social-link {
+    font-size: 10px; text-transform: uppercase;
+    letter-spacing: 2px; color: var(--text-muted);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 8px 16px; border-radius: 100px;
+    border: 1px solid transparent;
+    pointer-events: auto;
+}
+.hero__social-link:hover {
+    color: var(--accent); border-color: var(--line);
+    background: rgba(201, 162, 39, 0.05);
+    transform: translateY(-2px);
+}
+
+/* ===== CSS ЧАСТЬ 2: Sections + Cards + Gallery + Contact + Footer ===== */
+
+/* ===== SECTIONS ===== */
+.section {
+    position: relative; z-index: 10;
+    background: var(--bg);
+    padding: 100px 40px;
+}
+
+/* ===== ABOUT ===== */
+.section--about {
+    background: var(--bg-light);
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+}
+.about__container {
+    max-width: 1200px; width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+}
+.about__image {
+    position: relative; height: 550px;
+    border-radius: 8px; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+.about__image img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 8s cubic-bezier(0.8, 0, 0.2, 1), filter 0.5s ease;
+}
+.about__image:hover img { transform: scale(1.08); filter: brightness(1.1); }
+.about__image-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 40%, var(--bg) 100%);
+    opacity: 0.8;
+}
+.about__image-frame {
+    position: absolute; inset: 12px;
+    border: 1px solid var(--line); border-radius: 4px;
+    pointer-events: none;
+    transition: all 0.5s ease;
+}
+.about__image:hover .about__image-frame { border-color: var(--accent); inset: 16px; }
+
+.about__label {
+    font-size: 10px; text-transform: uppercase;
+    letter-spacing: 3px; color: var(--accent);
+    margin-bottom: 24px;
+    display: flex; align-items: center; gap: 12px;
+}
+.about__label::before {
+    content: ''; width: 30px; height: 1px;
+    background: var(--accent);
+}
+.about__title {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4vw, 56px);
+    font-weight: 700; line-height: 1.1;
+    letter-spacing: -1px; text-transform: uppercase;
+    margin-bottom: 32px;
+}
+.about__text {
+    font-size: 14px; line-height: 1.8;
+    color: var(--text-muted); margin-bottom: 24px;
+}
+.about__credentials {
+    display: flex; flex-direction: column;
+    gap: 12px; margin-top: 32px;
+}
+.about__credential {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 13px; padding: 10px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+.about__credential:hover {
+    background: rgba(201, 162, 39, 0.08);
+    transform: translateX(8px);
+}
+.about__credential-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent); flex-shrink: 0;
+    box-shadow: 0 0 10px rgba(201, 162, 39, 0.4);
+}
+
+/* ===== SERVICES ===== */
+.section--services { background: var(--bg); }
+.services__header {
+    text-align: center; margin-bottom: 60px;
+}
+.services__label {
+    font-size: 10px; text-transform: uppercase;
+    letter-spacing: 3px; color: var(--accent);
+    margin-bottom: 20px;
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+}
+.services__label::before, .services__label::after {
+    content: ''; width: 40px; height: 1px; background: var(--line);
+}
+.services__title {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4vw, 56px);
+    font-weight: 700; text-transform: uppercase;
+    letter-spacing: -1px;
+}
+.services__grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--line);
+}
+.service-card {
+    background: var(--bg);
+    padding: 40px 32px;
+    transition: all 0.6s ease;
+    cursor: pointer; position: relative;
+    overflow: hidden;
+}
+.service-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    transform: scaleX(0);
+    transition: transform 0.6s ease;
+}
+.service-card:hover {
+    background: var(--bg-card);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 60px rgba(201, 162, 39, 0.05);
+}
+.service-card:hover::before { transform: scaleX(1); }
+.service-card__num {
+    font-family: var(--font-display);
+    font-size: 48px; font-weight: 700;
+    color: var(--accent); opacity: 0.3;
+    line-height: 1; margin-bottom: 24px;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.service-card:hover .service-card__num {
+    opacity: 0.8; transform: scale(1.1);
+    text-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
+}
+.service-card__title {
+    font-family: var(--font-display);
+    font-size: 20px; font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px; margin-bottom: 16px;
+    transition: color 0.3s;
+}
+.service-card:hover .service-card__title { color: var(--accent-light); }
+.service-card__desc {
+    font-size: 13px; line-height: 1.7;
+    color: var(--text-muted);
+}
+.service-card__list {
+    list-style: none; margin-top: 20px;
+}
+.service-card__list li {
+    font-size: 12px; color: var(--text-muted);
+    padding: 6px 0; padding-left: 16px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+.service-card__list li::before {
+    content: ''; position: absolute;
+    left: 0; top: 50%;
+    width: 4px; height: 4px;
+    background: var(--accent); border-radius: 50%;
+    transform: translateY(-50%);
+}
+.service-card:hover .service-card__list li {
+    color: var(--text);
+    opacity: 0.7;
+    transform: translateX(4px);
+}
+
+/* ===== PROCESS ===== */
+.section--process { background: var(--bg-light); }
+.section--process::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--line), transparent);
+}
+.process__container { max-width: 1200px; margin: 0 auto; }
+.process__header { margin-bottom: 60px; }
+.process__steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+.process-step {
+    position: relative;
+    padding: 50px 20px 24px;
+    border-radius: 12px;
+    transition: all 0.5s ease;
+    background: transparent;
+}
+.process-step:hover {
+    background: rgba(201, 162, 39, 0.05);
+    transform: translateY(-4px);
+}
+.process-step__num {
+    position: absolute; top: 0; left: 20px;
+    font-family: var(--font-display);
+    font-size: 64px; font-weight: 700;
+    color: var(--accent); opacity: 0.15;
+    line-height: 1;
+}
+.process-step__title {
+    font-family: var(--font-display);
+    font-size: 18px; font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 16px; margin-top: 16px;
+}
+.process-step__desc {
+    font-size: 13px; line-height: 1.7;
+    color: var(--text-muted);
+}
+
+/* ===== GALLERY ===== */
+.section--gallery { background: var(--bg-light); }
+.gallery__header { text-align: center; margin-bottom: 60px; }
+.gallery__grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+.gallery__item {
+    position: relative;
+    border-radius: 8px; overflow: hidden;
+    aspect-ratio: 4/3;
+    cursor: pointer;
+    background: var(--bg-card);
+}
+.gallery__item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease, filter 0.5s ease;
+}
+.gallery__item:hover img { transform: scale(1.1); filter: brightness(1.1); }
+.gallery__item-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 50%, var(--bg) 100%);
+    opacity: 0.6;
+    transition: opacity 0.5s ease;
+}
+.gallery__item:hover .gallery__item-overlay { opacity: 0.8; }
+.gallery__item-caption {
+    position: absolute;
+    bottom: 24px; left: 24px; right: 24px;
+    font-family: var(--font-display);
+    font-size: 18px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1px;
+    transform: translateY(20px); opacity: 0;
+    transition: all 0.5s ease;
+}
+.gallery__item:hover .gallery__item-caption {
+    transform: translateY(0); opacity: 1;
+}
+
+/* ===== CATEGORIES ===== */
+.section--categories { background: var(--bg); }
+.categories__container { max-width: 1200px; margin: 0 auto; }
+.categories__title {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700; text-transform: uppercase;
+    text-align: center; margin-bottom: 60px;
+    letter-spacing: -1px;
+}
+.categories__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+}
+.category-item {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    padding: 28px 16px;
+    text-align: center;
+    transition: all 0.5s ease;
+    cursor: pointer; position: relative;
+    overflow: hidden; border-radius: 4px;
+    min-height: 120px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+}
+.category-item::before {
+    content: ''; position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transition: transform 0.5s ease;
+}
+.category-item:hover {
+    border-color: var(--accent);
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3), 0 0 40px rgba(201, 162, 39, 0.08);
+}
+.category-item:hover::before { transform: scaleX(1); }
+.category-item__num {
+    font-family: var(--font-display);
+    font-size: 32px; font-weight: 700;
+    color: var(--accent); margin-bottom: 12px;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.category-item:hover .category-item__num {
+    transform: scale(1.2);
+    text-shadow: 0 0 15px rgba(201, 162, 39, 0.4);
+}
+.category-item__text {
+    font-size: 12px; line-height: 1.5;
+    text-transform: uppercase; letter-spacing: 0.5px;
+    transition: opacity 0.3s ease;
+}
+
+/* Category detail overlay */
+.category-item__detail {
+    position: absolute;
+    inset: 0;
+    background: var(--bg-card);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s cubic-bezier(0.8, 0, 0.2, 1);
+    pointer-events: none;
+    z-index: 10;
+    border-radius: 4px;
+}
+.category-item:hover .category-item__detail,
+.category-item.active .category-item__detail {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+.category-item:hover .category-item__num,
+.category-item.active .category-item__num {
+    opacity: 0;
+    transform: scale(0.8);
+}
+.category-item:hover .category-item__text,
+.category-item.active .category-item__text {
+    opacity: 0;
+}
+.category-item__detail-title {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent);
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+.category-item__detail-desc {
+    font-size: 10.5px;
+    line-height: 1.55;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    text-align: center;
+}
+.category-item__detail-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    width: 100%;
+}
+.category-item__detail-list li {
+    font-size: 9.5px;
+    color: var(--text);
+    opacity: 0.7;
+    padding: 3px 0;
+    padding-left: 12px;
+    position: relative;
+    line-height: 1.4;
+}
+.category-item__detail-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 4px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+}
+
+/* ===== CONTACT (исправлено: z-index + pointer-events) ===== */
+.section--contact {
+    background: var(--bg-light); text-align: center;
+    position: relative;
+    z-index: 20;
+}
+.section--contact::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--line), transparent);
+}
+.contact__title {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 5vw, 72px);
+    font-weight: 700; text-transform: uppercase;
+    letter-spacing: -2px; margin-bottom: 24px;
+}
+.contact__subtitle {
+    font-size: 14px; color: var(--text-muted);
+    margin-bottom: 48px;
+}
+.contact__phone {
+    display: inline-flex; align-items: center; gap: 16px;
+    font-family: var(--font-display);
+    font-size: clamp(24px, 3vw, 48px);
+    font-weight: 600; color: var(--accent);
+    text-decoration: none; letter-spacing: -1px;
+    transition: all 0.4s ease;
+    padding: 16px 32px; border-radius: 100px;
+    border: 1px solid var(--line);
+    position: relative;
+    z-index: 25;
+    pointer-events: auto;
+}
+.contact__phone:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 40px rgba(201, 162, 39, 0.2);
+    transform: scale(1.02);
+}
+.contact__links {
+    display: flex; justify-content: center;
+    gap: 24px; margin-top: 48px; flex-wrap: wrap;
+    position: relative;
+    z-index: 25;
+}
+.contact__link {
+    font-size: 11px; text-transform: uppercase;
+    letter-spacing: 2px; color: var(--text-muted);
+    text-decoration: none;
+    padding: 14px 28px;
+    border: 1px solid var(--line); border-radius: 100px;
+    transition: all 0.4s ease;
+    position: relative; overflow: hidden;
+    pointer-events: auto;
+    z-index: 25;
+}
+.contact__link::before {
+    content: ''; position: absolute; inset: 0;
+    background: var(--accent);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s ease;
+    z-index: -1;
+}
+.contact__link:hover {
+    border-color: var(--accent); color: var(--bg);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(201, 162, 39, 0.2);
+}
+.contact__link:hover::before { transform: scaleX(1); }
+
+/* ===== FOOTER ===== */
+.footer {
+    position: relative; z-index: 20;
+    background: var(--bg);
+    padding: 40px;
+    border-top: 1px solid var(--line);
+    display: flex; justify-content: space-between;
+    align-items: center;
+}
+.footer__copy { font-size: 11px; color: var(--text-muted); }
+.footer__social { display: flex; gap: 24px; }
+.footer__social a {
+    font-size: 11px; color: var(--text-muted);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 6px 12px; border-radius: 100px;
+    pointer-events: auto;
+}
+.footer__social a:hover {
+    color: var(--accent);
+    background: rgba(201, 162, 39, 0.08);
+}
+
+/* ===== MOBILE MENU ===== */
+.mobile-menu {
+    position: fixed; inset: 0; z-index: 999;
+    background: rgba(10,10,10,0.97);
+    backdrop-filter: blur(30px);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 32px;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+[data-theme="light"] .mobile-menu {
+    background: rgba(245,243,239,0.97);
+}
+.mobile-menu.active { opacity: 1; pointer-events: auto; }
+.mobile-menu a {
+    font-family: var(--font-display);
+    font-size: 32px; font-weight: 600;
+    text-transform: uppercase; color: var(--text);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 8px 24px; border-radius: 100px;
+}
+.mobile-menu a:hover {
+    color: var(--accent);
+    background: rgba(201, 162, 39, 0.1);
+    transform: scale(1.05);
+}
+.mobile-menu__close {
+    position: absolute; top: 24px; right: 40px;
+    font-size: 24px; cursor: pointer;
+    width: 48px; height: 48px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%; border: 1px solid var(--line);
+    transition: all 0.3s ease;
+}
+.mobile-menu__close:hover {
+    border-color: var(--accent); color: var(--accent);
+    transform: rotate(90deg);
+}
+
+/* ===== LIGHT THEME ADAPTATIONS ===== */
+[data-theme="light"] .about__image {
+    box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+}
+[data-theme="light"] .service-card:hover {
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08), 0 0 60px rgba(184, 146, 26, 0.06);
+}
+[data-theme="light"] .category-item:hover {
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08), 0 0 40px rgba(184, 146, 26, 0.06);
+}
+[data-theme="light"] .hero__athlete {
+    filter: none;
+}
+[data-theme="light"] .contact__link:hover {
+    color: #ffffff;
+}
+[data-theme="light"] .gallery__item-overlay {
+    opacity: 0.4;
+}
+[data-theme="light"] .gallery__item:hover .gallery__item-overlay {
+    opacity: 0.6;
+}
+[data-theme="light"] .about__image-overlay {
+    opacity: 0.5;
+}
+
+/* ===== RESPONSIVE ===== */
+/* ===== TESTIMONIALS ===== */
+.section--testimonials { background: var(--bg); }
+.testimonials__container { max-width: 900px; margin: 0 auto; position: relative; }
+.testimonials__slider { position: relative; }
+.testimonial-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 40px;
+    display: none;
+    animation: testimonialFadeIn 0.6s cubic-bezier(0.8, 0, 0.2, 1) forwards;
+}
+.testimonial-card.active {
+    display: block;
+}
+@keyframes testimonialFadeIn {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+.testimonial-card__stars {
+    color: var(--accent);
+    font-size: 20px;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}
+.testimonial-card__text {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text);
+    opacity: 0.85;
+    font-style: italic;
+    margin-bottom: 28px;
+}
+.testimonial-card__author {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.testimonial-card__avatar {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-size: 16px; font-weight: 600;
+    color: var(--bg);
+    flex-shrink: 0;
+}
+.testimonial-card__name {
+    font-family: var(--font-display);
+    font-size: 16px; font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.testimonial-card__role {
+    font-size: 12px; color: var(--text-muted);
+    margin-top: 2px;
+}
+.testimonials__nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 40px;
+}
+.testimonials__btn {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--text);
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex; align-items: center; justify-content: center;
+}
+.testimonials__btn:hover {
+    border-color: var(--accent);
+    background: rgba(201, 162, 39, 0.1);
+    transform: scale(1.1);
+}
+.testimonials__dots {
+    display: flex; gap: 8px;
+}
+.testimonials__dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--line);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none; padding: 0;
+}
+.testimonials__dot.active {
+    background: var(--accent);
+    box-shadow: 0 0 10px rgba(201, 162, 39, 0.4);
+    transform: scale(1.3);
+}
+.testimonials__dot:hover {
+    background: var(--accent-light);
+}
+
+@media (max-width: 1024px) {
+    .about__container { grid-template-columns: 1fr; gap: 40px; }
+    .about__image { height: 450px; }
+    .services__grid { grid-template-columns: repeat(2, 1fr); }
+    .process__steps { grid-template-columns: repeat(2, 1fr); }
+    .categories__grid { grid-template-columns: repeat(3, 1fr); }
+    .gallery__grid { grid-template-columns: repeat(2, 1fr); }
+    .hero__stat-value { font-size: clamp(36px, 5vw, 64px); }
+    .hero__stat-line { width: 140px; }
+    .testimonial-card { padding: 32px; }
+}
+@media (max-width: 768px) {
+    .nav { padding: 12px 16px; }
+    .nav__logo { font-size: 11px; letter-spacing: 2px; padding: 6px 12px; }
+    .nav__menu-text { display: none; }
+    .nav__phone span:last-child { display: none; }
+    .nav__phone-icon { width: 36px; height: 36px; }
+    .theme-toggle { width: 32px; height: 32px; font-size: 14px; }
+    .hero { min-height: 100svh; }
+    .hero__title-group { left: 16px; top: 55%; }
+    .hero__title { font-size: clamp(28px, 8vw, 48px); letter-spacing: -1px; }
+    .hero__subtitle { left: 16px; top: 90px; font-size: 9px; }
+    .hero__stats { display: none; }
+    .hero__cta { left: 16px; bottom: 30px; }
+    .hero__cta-circle { width: 44px; height: 44px; }
+    .hero__cta-text { font-size: 10px; }
+    .hero__social { right: 16px; bottom: 30px; gap: 12px; }
+    .hero__social-link { font-size: 9px; padding: 6px 10px; }
+    .hero__line { left: 16px; right: 16px; top: 70px; }
+    .section { padding: 60px 16px; }
+    .about__container { gap: 32px; }
+    .about__image { height: 320px; border-radius: 8px; }
+    .about__title { font-size: clamp(26px, 6vw, 40px); }
+    .about__text { font-size: 13px; }
+    .about__credentials { gap: 8px; }
+    .about__credential { font-size: 12px; padding: 8px 12px; }
+    .services__grid { grid-template-columns: 1fr; gap: 1px; }
+    .service-card { padding: 28px 20px; }
+    .service-card__num { font-size: 36px; }
+    .service-card__title { font-size: 18px; }
+    .process__steps { grid-template-columns: 1fr; gap: 20px; }
+    .process-step { padding: 40px 16px 20px; }
+    .process-step__num { font-size: 48px; }
+    .categories__grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .category-item { padding: 20px 10px; min-height: 100px; }
+    .category-item__num { font-size: 24px; }
+    .category-item__text { font-size: 10px; }
+    .category-item__detail { padding: 14px; }
+    .category-item__detail-title { font-size: 13px; margin-bottom: 6px; }
+    .category-item__detail-desc { font-size: 9.5px; margin-bottom: 8px; }
+    .category-item__detail-list li { font-size: 9px; padding: 2px 0 2px 10px; }
+    .category-item__detail-list li::before { width: 3px; height: 3px; top: 6px; }
+    .gallery__grid { grid-template-columns: 1fr; gap: 16px; }
+    .gallery__item { aspect-ratio: 16/10; }
+    .testimonial-card { padding: 24px; }
+    .testimonial-card__text { font-size: 14px; line-height: 1.7; }
+    .testimonial-card__avatar { width: 40px; height: 40px; font-size: 14px; }
+    .testimonial-card__name { font-size: 14px; }
+    .testimonials__nav { gap: 16px; margin-top: 28px; }
+    .testimonials__btn { width: 40px; height: 40px; }
+    .contact__phone { font-size: clamp(20px, 6vw, 32px); padding: 12px 20px; }
+    .contact__links { gap: 12px; }
+    .contact__link { font-size: 10px; padding: 10px 18px; }
+    .footer { flex-direction: column; gap: 16px; text-align: center; padding: 28px 16px; }
+    .mobile-menu a { font-size: 24px; }
+    .mobile-menu__close { top: 16px; right: 20px; }
+    /* Preloader mobile */
+    .preloader-name { font-size: clamp(1.5rem, 8vw, 2.5rem); }
+    .preloader-subtitle { font-size: 0.75rem; letter-spacing: 2px; }
+    .preloader-pulse { width: 60px; height: 60px; }
+    .preloader-pulse-inner { inset: 14px; }
+    .preloader-skip { padding: 10px 24px; font-size: 0.75rem; }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+    .hero__title { font-size: clamp(24px, 10vw, 36px); }
+    .hero__athlete { height: 70vh; opacity: 0.7; }
+    .about__image { height: 260px; }
+    .service-card { padding: 24px 16px; }
+    .service-card__num { font-size: 32px; }
+    .category-item { padding: 16px 8px; min-height: 90px; }
+    .category-item__num { font-size: 20px; }
+    .testimonial-card { padding: 20px; }
+    .testimonial-card__text { font-size: 13px; }
+    .contact__title { font-size: clamp(28px, 8vw, 48px); }
+    .contact__phone { font-size: clamp(18px, 7vw, 28px); }
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent-dark); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+    </style>
+    <script>
+    // ===== THEME TOGGLE (early init) =====
+    (function(){
+        var html = document.documentElement;
+        var savedTheme = localStorage.getItem('theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme) {
+            html.setAttribute('data-theme', savedTheme);
+        } else if (!prefersDark) {
+            html.setAttribute('data-theme', 'light');
+        }
+
+        window.toggleTheme = function() {
+            var current = html.getAttribute('data-theme') || 'dark';
+            var next = current === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            var icon = document.getElementById('themeIcon');
+            if (icon) {
+                icon.textContent = next === 'light' ? '☾' : '☀';
+            }
+        };
+
+        // Update icon immediately on load
+        document.addEventListener('DOMContentLoaded', function() {
+            var icon = document.getElementById('themeIcon');
+            if (icon) {
+                var current = html.getAttribute('data-theme') || 'dark';
+                icon.textContent = current === 'light' ? '☾' : '☀';
+            }
+        });
+    })();
+    </script>
+</head>
+<body class="preloader-active">
+    <div class="page-wrapper" id="pageWrapper">
+
+<!-- PRELOADER -->
+<div id="preloader">
+<video id="preloader-video" autoplay muted loop playsinline>
+<source src="circulatory.mp4" type="video/mp4">
+<source src="circulatory.webm" type="video/webm">
+</video>
+<div class="preloader-overlay"></div>
+<div class="preloader-content">
+<div class="preloader-pulse"><div class="preloader-pulse-inner"></div></div>
+<div class="preloader-name">Виталий Санников</div>
+<div class="preloader-subtitle">Врач-реабилитолог & Тренер</div>
+<button class="preloader-skip" id="skipBtn">Пропустить заставку</button>
+</div>
+<div class="preloader-scroll-hint">
+<div class="scroll-arrow"></div>
+<span>Скроллите вниз</span>
+</div>
+</div>
+
+<!-- ===== HTML BODY (Часть 2) ===== -->
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+        <div class="hero__three-canvas" id="threeCanvas"></div>
+        <div class="hero__bg-gradient"></div>
+
+        <div class="hero__athlete anim-scale delay-3">
+            <img src="vitaly-info.png" alt="Виталий Санников" id="athleteImg" width="600" height="800" loading="eager">
+        </div>
+
+        <nav class="nav" role="navigation" aria-label="Главное меню">
+            <div class="nav__menu" onclick="toggleMenu()" role="button" aria-label="Открыть меню" tabindex="0">
+                <div class="nav__menu-icon" aria-hidden="true">
+                    <span></span><span></span><span></span>
+                </div>
+                <span class="nav__menu-text">Меню</span>
+            </div>
+            <div class="nav__logo anim-fade delay-1">Виталий Санников</div>
+            <div class="nav__right">
+                <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Переключить тему" title="Светлая / Тёмная тема">
+                    <span class="theme-toggle__icon" id="themeIcon">☀</span>
+                </button>
+                <a href="tel:+79636780232" class="nav__phone anim-fade delay-1" aria-label="Позвонить Виталию Санникову">
+                    <span class="nav__phone-icon" aria-hidden="true">📞</span>
+                    <span>8 963 678 02 32</span>
+                </a>
+            </div>
+        </nav>
+
+        <div class="hero__content">
+            <div class="hero__line anim-fade delay-1"></div>
+
+            <div class="hero__subtitle anim-fade delay-2">
+                Врач-реабилитолог<br>
+                Фитнес-тренер<br>
+                Нутрициолог
+            </div>
+
+            <div class="hero__title-group">
+                <div class="hero__title">
+                    <span class="hero__title-line anim-fade-up delay-1">Ваше тело</span>
+                    <span class="hero__title-line hero__title-accent anim-fade-up delay-2">Сильнее</span>
+                    <span class="hero__title-line anim-fade-up delay-3">Чем вы думаете</span>
+                </div>
+            </div>
+
+            <div class="hero__stats">
+                <div class="hero__stat anim-slide-right delay-4">
+                    <div class="hero__stat-value">10+</div>
+                    <div class="hero__stat-line"></div>
+                    <div class="hero__stat-label">Лет опыта</div>
+                </div>
+                <div class="hero__stat anim-slide-right delay-5">
+                    <div class="hero__stat-value">500+</div>
+                    <div class="hero__stat-line"></div>
+                    <div class="hero__stat-label">Восстановленных</div>
+                </div>
+                <div class="hero__stat anim-slide-right delay-6">
+                    <div class="hero__stat-value">3</div>
+                    <div class="hero__stat-line"></div>
+                    <div class="hero__stat-label">Экспертизы в одном</div>
+                </div>
+            </div>
+
+            <a href="#contact" class="hero__cta anim-fade delay-5" aria-label="Записаться на консультацию">
+                <div class="hero__cta-circle"><span>→</span></div>
+                <div class="hero__cta-text">
+                    Записаться<br>на консультацию
+                </div>
+            </a>
+
+            <div class="hero__social anim-fade delay-6">
+                <a href="https://t.me/VitalySannikov" class="hero__social-link" target="_blank" rel="noopener" aria-label="Telegram">TG</a>
+                <a href="https://vk.com/vitalysannikov" class="hero__social-link" target="_blank" rel="noopener" aria-label="ВКонтакте">VK</a>
+                <a href="https://t.me/San_L1fe" class="hero__social-link" target="_blank" rel="noopener" aria-label="Telegram канал">Канал</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="section section--about" id="about">
+        <div class="about__container">
+            <div class="about__image reveal-on-scroll">
+                <img src="hero.jpg" alt="Виталий Санников — врач-реабилитолог" width="600" height="550" loading="lazy">
+                <div class="about__image-overlay"></div>
+                <div class="about__image-frame"></div>
+            </div>
+            <div class="about__content reveal-on-scroll">
+                <div class="about__label">Обо мне</div>
+                <h2 class="about__title">
+                    Медицина + Фитнес + Питание = Ваш результат
+                </h2>
+                <p class="about__text">
+                    Я не просто выбираю между медициной и фитнесом — я объединил их, создав целостный подход к здоровью. Моя философия проста: я не просто убираю боль или помогаю сбросить вес. Я возвращаю вам уверенность в собственном теле, учу его быть сильным, выносливым и послушным в любой ситуации.
+                </p>
+                <p class="about__text">
+                    Работаю со всеми, кто готов вкладываться в своё здоровье. От сложной медицинской реабилитации до создания идеальной спортивной формы.
+                </p>
+                <div class="about__credentials">
+                    <div class="about__credential">
+                        <div class="about__credential-dot"></div>
+                        <span>Педагог по физической культуре</span>
+                    </div>
+                    <div class="about__credential">
+                        <div class="about__credential-dot"></div>
+                        <span>Академия фитнеса и бодибилдинга</span>
+                    </div>
+                    <div class="about__credential">
+                        <div class="about__credential-dot"></div>
+                        <span>Действующий реабилитолог</span>
+                    </div>
+                    <div class="about__credential">
+                        <div class="about__credential-dot"></div>
+                        <span>Медицинский и классический массаж</span>
+                    </div>
+                    <div class="about__credential">
+                        <div class="about__credential-dot"></div>
+                        <span>Нутрициология</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section class="section section--services" id="services">
+        <div class="services__header reveal-on-scroll">
+            <div class="services__label">Услуги</div>
+            <h2 class="services__title">Комплексный подход<br>к вашему здоровью</h2>
+        </div>
+        <div class="services__grid">
+            <div class="service-card reveal-on-scroll">
+                <div class="service-card__num">I</div>
+                <h3 class="service-card__title">Диагностика</h3>
+                <p class="service-card__desc">Глубокий анализ вашего состояния перед началом работы</p>
+                <ul class="service-card__list">
+                    <li>Первичная консультация реабилитолога</li>
+                    <li>Функциональная диагностика движений</li>
+                    <li>Оценка осанки и паттернов</li>
+                    <li>Выявление слабых звеньев</li>
+                </ul>
+            </div>
+            <div class="service-card reveal-on-scroll">
+                <div class="service-card__num">II</div>
+                <h3 class="service-card__title">Восстановление</h3>
+                <p class="service-card__desc">Безопасный путь после травм и операций</p>
+                <ul class="service-card__list">
+                    <li>Реабилитация после операций</li>
+                    <li>Лечебный и адаптивный фитнес</li>
+                    <li>Уменьшение болевого синдрома</li>
+                    <li>Восстановление после беременности</li>
+                </ul>
+            </div>
+            <div class="service-card reveal-on-scroll">
+                <div class="service-card__num">III</div>
+                <h3 class="service-card__title">Фитнес</h3>
+                <p class="service-card__desc">Архитектор вашей идеальной формы</p>
+                <ul class="service-card__list">
+                    <li>Персональные программы тренировок</li>
+                    <li>Снижение веса и жиросжигание</li>
+                    <li>Набор мышечной массы</li>
+                    <li>Подготовка к спортивным рекордам</li>
+                </ul>
+            </div>
+            <div class="service-card reveal-on-scroll">
+                <div class="service-card__num">IV</div>
+                <h3 class="service-card__title">Питание</h3>
+                <p class="service-card__desc">Наука о питании как фундамент энергии</p>
+                <ul class="service-card__list">
+                    <li>Нутрициологическое сопровождение</li>
+                    <li>Индивидуальные планы питания</li>
+                    <li>Подбор формата под образ жизни</li>
+                    <li>Точный расчёт КБЖУ</li>
+                </ul>
+            </div>
+            <div class="service-card reveal-on-scroll">
+                <div class="service-card__num">V</div>
+                <h3 class="service-card__title">Специальные</h3>
+                <p class="service-card__desc">Уникальные форматы для особых задач</p>
+                <ul class="service-card__list">
+                    <li>Программы для детей и подростков</li>
+                    <li>Совместные тренировки мама+ребёнок</li>
+                    <li>Дистанционное онлайн-сопровождение</li>
+                    <li>Лечебный фитнес при диагнозах</li>
+                </ul>
+            </div>
+            <div class="service-card reveal-on-scroll" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px;">
+                <div style="font-family:var(--font-display);font-size:48px;font-weight:700;color:var(--accent);">15</div>
+                <div style="font-size:14px;text-transform:uppercase;letter-spacing:2px;text-align:center;">Категорий<br>запросов</div>
+                <a href="#categories" style="font-size:12px;color:var(--accent);text-decoration:none;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid var(--accent);padding-bottom:4px;">Смотреть все →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROCESS ===== -->
+    <section class="section section--process" id="process">
+        <div class="process__container">
+            <div class="process__header reveal-on-scroll">
+                <div class="services__label">Как проходит работа</div>
+                <h2 class="services__title">Путь от проблемы<br>к уверенности</h2>
+            </div>
+            <div class="process__steps">
+                <div class="process-step reveal-on-scroll">
+                    <div class="process-step__num">01</div>
+                    <h3 class="process-step__title">Консультация и диагностика</h3>
+                    <p class="process-step__desc">Глубокая диагностика: анализ цели, сбор анамнеза, изучение истории здоровья, текущие параметры и образ жизни.</p>
+                </div>
+                <div class="process-step reveal-on-scroll">
+                    <div class="process-step__num">02</div>
+                    <h3 class="process-step__title">Постановка целей</h3>
+                    <p class="process-step__desc">Формулируем чёткие, измеримые и реалистичные цели. Определяем сроки и критерии успеха.</p>
+                </div>
+                <div class="process-step reveal-on-scroll">
+                    <div class="process-step__num">03</div>
+                    <h3 class="process-step__title">Индивидуальная программа</h3>
+                    <p class="process-step__desc">Персонализированный план: тренировки 1ч 15мин, питание (3 формата), прогрессивная нагрузка.</p>
+                </div>
+                <div class="process-step reveal-on-scroll">
+                    <div class="process-step__num">04</div>
+                    <h3 class="process-step__title">Сопровождение и результат</h3>
+                    <p class="process-step__desc">Постоянная поддержка, коррекция программы, преодоление плато. Главный результат — уверенность в теле.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="section section--testimonials" id="testimonials">
+        <div class="testimonials__header reveal-on-scroll">
+            <div class="services__label">Отзывы</div>
+            <h2 class="services__title">Что говорят клиенты</h2>
+        </div>
+        <div class="testimonials__container">
+            <div class="testimonials__slider" id="testimonialsSlider">
+                <div class="testimonial-card active">
+                    <div class="testimonial-card__stars">★★★★★</div>
+                    <p class="testimonial-card__text">"После операции на колене думал, что больше никогда не смогу бегать. Виталий разработал программу реабилитации, и уже через 3 месяца я вернулся к тренировкам. Профессионал с медицинским подходом!"</p>
+                    <div class="testimonial-card__author">
+                        <div class="testimonial-card__avatar">АК</div>
+                        <div class="testimonial-card__info">
+                            <div class="testimonial-card__name">Алексей К.</div>
+                            <div class="testimonial-card__role">Восстановление после операции</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-card__stars">★★★★★</div>
+                    <p class="testimonial-card__text">"За 4 месяца сбросила 18 кг без голодовок и изнурительных тренировок. Виталий подобрал питание под мой ритм жизни, а тренировки проходят с учётом моих особенностей. Результат превзошёл ожидания!"</p>
+                    <div class="testimonial-card__author">
+                        <div class="testimonial-card__avatar">МП</div>
+                        <div class="testimonial-card__info">
+                            <div class="testimonial-card__name">Марина П.</div>
+                            <div class="testimonial-card__role">Снижение веса + питание</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-card__stars">★★★★★</div>
+                    <p class="testimonial-card__text">"Обращался за устранением хронической боли в пояснице. Виталий не просто снял симптомы — нашёл причину и устранил её. Теперь могу спокойно работать и заниматься спортом без ограничений."</p>
+                    <div class="testimonial-card__author">
+                        <div class="testimonial-card__avatar">ДС</div>
+                        <div class="testimonial-card__info">
+                            <div class="testimonial-card__name">Дмитрий С.</div>
+                            <div class="testimonial-card__role">Устранение болевого синдрома</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-card__stars">★★★★★</div>
+                    <p class="testimonial-card__text">"Готовил меня к марафону с нуля. Чёткая программа, постоянная обратная связь, коррекция на каждом этапе. Пробежал свои первые 42 км без травм. Рекомендую всем, кто ставит серьёзные цели!"</p>
+                    <div class="testimonial-card__author">
+                        <div class="testimonial-card__avatar">ИВ</div>
+                        <div class="testimonial-card__info">
+                            <div class="testimonial-card__name">Игорь В.</div>
+                            <div class="testimonial-card__role">Подготовка к марафону</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-card__stars">★★★★★</div>
+                    <p class="testimonial-card__text">"После вторых родов не могла вернуть форму. Совместные тренировки с ребёнком — это находка! Виталий учитывает все нюансы, а атмосфера занятий заряжает энергией. Чувствую себя лучше, чем до беременности."</p>
+                    <div class="testimonial-card__author">
+                        <div class="testimonial-card__avatar">ЕМ</div>
+                        <div class="testimonial-card__info">
+                            <div class="testimonial-card__name">Екатерина М.</div>
+                            <div class="testimonial-card__role">После беременности + мама+ребёнок</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-card__stars">★★★★★</div>
+                    <p class="testimonial-card__text">"Онлайн-сопровождение — полноценная работа, несмотря на дистанцию. Виталий анализирует видео тренировок, корректирует технику, отвечает на вопросы в любое время. Лучший инвестиции в здоровье за последние годы."</p>
+                    <div class="testimonial-card__author">
+                        <div class="testimonial-card__avatar">СГ</div>
+                        <div class="testimonial-card__info">
+                            <div class="testimonial-card__name">Сергей Г.</div>
+                            <div class="testimonial-card__role">Онлайн-сопровождение</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonials__nav">
+                <button class="testimonials__btn testimonials__btn--prev" onclick="prevTestimonial()" aria-label="Предыдущий отзыв">←</button>
+                <div class="testimonials__dots" id="testimonialsDots"></div>
+                <button class="testimonials__btn testimonials__btn--next" onclick="nextTestimonial()" aria-label="Следующий отзыв">→</button>
+            </div>
+        </div>
+    </section>
+
+
+<!-- ===== GALLERY ===== -->
+    <section class="section section--gallery" id="gallery">
+        <div class="gallery__header reveal-on-scroll">
+            <div class="services__label">Галерея</div>
+            <h2 class="services__title">Методика в действии</h2>
+        </div>
+        <div class="gallery__grid">
+            <div class="gallery__item reveal-on-scroll">
+                <img src="help1.jpg" alt="Лечебный массаж" width="400" height="300" loading="lazy">
+                <div class="gallery__item-overlay"></div>
+                <div class="gallery__item-caption">Лечебный массаж</div>
+            </div>
+            <div class="gallery__item reveal-on-scroll">
+                <img src="help3.jpg" alt="Реабилитация и консультация" width="400" height="300" loading="lazy">
+                <div class="gallery__item-overlay"></div>
+                <div class="gallery__item-caption">Консультация реабилитолога</div>
+            </div>
+            <div class="gallery__item reveal-on-scroll">
+                <img src="portrait.jpg" alt="Персональная тренировка" width="400" height="300" loading="lazy">
+                <div class="gallery__item-overlay"></div>
+                <div class="gallery__item-caption">Персональная тренировка</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CATEGORIES ===== -->
+    <section class="section section--categories" id="categories">
+        <div class="categories__container">
+            <h2 class="categories__title reveal-on-scroll">С чем я работаю</h2>
+            <div class="categories__grid">
+                <div class="category-item reveal-on-scroll">
+                    <div class="category-item__num">01</div>
+                    <div class="category-item__text">Снижение<br>веса</div>
+                    <div class="category-item__detail">
+                        <div class="category-item__detail-title">Снижение веса</div>
+                        <p class="category-item__detail-desc">Индивидуальный подход без голодовок. Персональный план питания с точным расчётом КБЖУ, тренировки под ваш уровень и постоянное сопровождение.</p>
+                        <ul class="category-item__detail-list"><li>Расчёт КБЖУ под ваш образ жизни</li><li>Тренировки без перегрузок</li><li>Коррекция привычек питания</li><li>Поддержка 24/7</li></ul>
+                    </div>
+                </div>
+                <div class="category-item reveal-on-scroll">
+                    <div class="category-item__num">02</div>
+                    <div class="category-item__text">Набор<br>мышц</div>
+                    <div class="category-item__detail">
+                        <div class="category-item__detail-title">Набор мышц</div>
+                        <p class="category-item__detail-desc">Программа для эффективного набора качественной массы. Персональные планы с прогрессивной нагрузкой и питание для анаболизма.</p>
+                        <ul class="category-item__detail-list"><li>Прогрессивная нагрузка</li><li>Питание для роста мышц</li><li>Контроль техники</li><li>Периодизация тренировок</li></ul>
+                    </div>
+                </div>
+                <div class="category-item reveal-on-scroll">
+                    <div class="category-item__num">03</div>
+                    <div class="category-item__text">Подтяжка<br>тела</div>
+                    <div class="category-item__detail">
+                        <div class="category-item__detail-title">Подтяжка тела</div>
+                        <p class="category-item__detail-desc">Улучшение тонуса кожи и мышц, коррекция фигуры. Эффективна после похудения или родов.</p>
+                        <ul class="category-item__detail-list"><li>Упражнения на рельеф</li><li>Коррекция проблемных зон</li><li>Улучшение тонуса кожи</li><li>Комплексный подход</li></ul>
+                    </div>
+                </div>
+                <div class="category-item reveal-on-scroll">
+                    <div class="category-item__num">04</div>
+                    <div class="category-item__text">Укрепление<br>зон</div>
+                    <div class="category-item__detail">
+                        <div class="category-item__detail-title">Укрепление зон</div>
+                        <p class="category-item__detail-desc">Целенаправленная работа над конкретными зонами: пресс, спина, ягодицы, руки, ноги. Исправление мышечных дисбалансов.</p>
+                        <ul class="category-item__detail-list"><li>Диагностика слабых зон</li><li>Целевые упражнения</li><li>Исправление дисбалансов</li><li>Гармоничное развитие</li></ul>
+                    </div>
+                </div>
+                <div class="category-item reveal-on-scroll">
+                    <div class="category-item__num">05</div>
+                    <div class="category-item__text">Физические<br>качества</div>
+                    <div class="category-item__detail">
+                        <div class="category-item__detail-title">Физические качества</div>
+                        <p class="category-item__detail-desc">Развитие силы, выносливости, гибкости, координации. Для спортсменов и любителей всестороннего развития.</p>
+                        <ul class="category-item__detail-list"><li>Развитие силы</li><li>Увеличение выносливости</li><li>Гибкость и мобильность</li><li>Спортивная подготовка</li></ul>
+                    </div>
+                </div>
+                <div class="category-item reveal-on-scroll">
+                    <div class="category-item__num">06</div>
+                    <div class="category-item__text">План<br>питания</div>
+                    <div class="category-item__detail">
+                        <div class="category-item__detail-title">План питания</div>
+                        <p class="category-item__detail-desc">Персональный план с точным расчётом КБЖУ. Учитываю предпочтения, аллергии, режим дня и цели.</p>
+                        <ul class="category-item__detail-list"><li>Точный расчёт КБЖУ</li><li>Учёт предпочтений</li><li>Адаптация под режим</li><li>Разнообразное меню</li></ul>
+                    </div>
+                </div>
+                <div class="category-item reveal-on-scroll">
+                    <div class="category-item__num">07</div>
+                    <div class="category-item__text">Программа<br>тренировок</div>
+                    <div class="category-item__detail">
+                        <div class="category-item__detail-title">Программа тренировок</div>
+                        <p class="category-item__detail-desc">Индивидуальные программы для зала, дома или улицы. Учитываю уровень подготовки, оборудование и ограничения.</p>
+                        <ul class="category-item__detail-list"><li>Под любое оборудование</li><li>Учёт уровня подготовки</li><li>Прогрессивная нагрузка</li><li>Регулярная коррекция</li></ul>
+                    </div>
+                </div>
+                <div class="category-item reveal-on-scroll">
+                    <div class="category-item__num">08</div>
+                    <div class="category-item__text">После<br>операций</div>
+                    <div class="category-item__detail">
+                        <div class="category-item__detail-title">После операций</div>
+                        <p class="category-item__detail-desc">Реабилитация после ортопедических операций. Работаю по протоколам восстановления с учётом сроков заживления.</p>
+                        <ul class="category-item__detail-list"><li>Постоперационная реабилитация</li><li>Восстановление подвижности</li><li>Безопасная нагрузка</li><li>Контроль заживления</li></ul>
+                    </div>
+                </div>
+                <div class="category-item reveal-on-scroll">
+                    <div class="category-item__num">09</div>
+                    <div class="category-item__text">Подготовка<br>к рекорду</div>
+                    <div class="category-item__detail">
+                        <div class="category-item__detail-title">Подготовка к рекорду</div>
+                        <p class="category-item__detail-desc">Подготовка к марафону, триатлону, силовым соревнованиям. Периодизированные программы с пиковой формой к старту.</p>
+                        <ul class="category-item__detail-list"><li>Периодизированные планы</li><li>Пиковая форма к старту</li><li>Тактика соревнований</li><li>Психологическая подготовка</li></ul>
+                    </div>
+                </div>
+                <div class="category-item reveal-on-scroll">
+                    <div class="category-item__num">10</div>
+                    <div class="category-item__text">Для<br>ребёнка</div>
+                    <div class="category-item__detail">
+                        <div class="category-item__detail-title">Для ребёнка</div>
+                        <p class="category-item__detail-desc">Программы для детей: коррекция осанки, развитие координации, укрепление корсета. Игровой формат.</p>
+                        <ul class="category-item__detail-list"><li>Коррекция осанки</li><li>Развитие координации</li><li>Укрепление корсета</li><li>Игровой формат</li></ul>
+                    </div>
+                </div>
+                <div class="category-item reveal-on-scroll">
+                    <div class="category-item__num">11</div>
+                    <div class="category-item__text">Уменьшение<br>боли</div>
+                    <div class="category-item__detail">
+                        <div class="category-item__detail-title">Уменьшение боли</div>
+                        <p class="category-item__detail-desc">Устранение хронической и острой боли в спине, шее, суставах. Нахожу причину через диагностику и устраняю её.</p>
+                        <ul class="category-item__detail-list"><li>Диагностика причины боли</li><li>Терапевтические упражнения</li><li>Мануальные техники</li><li>Профилактика рецидивов</li></ul>
+                    </div>
+                </div>
+                <div class="category-item reveal-on-scroll">
+                    <div class="category-item__num">12</div>
+                    <div class="category-item__text">После<br>беременности</div>
+                    <div class="category-item__detail">
+                        <div class="category-item__detail-title">После беременности</div>
+                        <p class="category-item__detail-desc">Восстановление после родов: устранение диастаза, тонус тазового дна, коррекция осанки. Адаптировано под каждый этап.</p>
+                        <ul class="category-item__detail-list"><li>Восстановление диастаза</li><li>Тонус тазового дна</li><li>Коррекция осанки</li><li>Постепенная нагрузка</li></ul>
+                    </div>
+                </div>
+                <div class="category-item reveal-on-scroll">
+                    <div class="category-item__num">13</div>
+                    <div class="category-item__text">Онлайн<br>сопровождение</div>
+                    <div class="category-item__detail">
+                        <div class="category-item__detail-title">Онлайн-сопровождение</div>
+                        <p class="category-item__detail-desc">Дистанционное сопровождение из любой точки мира. Анализ видео тренировок, коррекция техники, консультации.</p>
+                        <ul class="category-item__detail-list"><li>Анализ видео тренировок</li><li>Коррекция техники</li><li>Программы на дистанции</li><li>Ежедневная поддержка</li></ul>
+                    </div>
+                </div>
+                <div class="category-item reveal-on-scroll">
+                    <div class="category-item__num">14</div>
+                    <div class="category-item__text">Мама +<br>ребёнок</div>
+                    <div class="category-item__detail">
+                        <div class="category-item__detail-title">Мама + ребёнок</div>
+                        <p class="category-item__detail-desc">Совместные тренировки мамы с ребёнком. Не нужно искать время без малыша — тренируйтесь вместе!</p>
+                        <ul class="category-item__detail-list"><li>Тренировки вместе с ребёнком</li><li>Учёт возраста малыша</li><li>Восстановление мамы</li><li>Весёлый формат</li></ul>
+                    </div>
+                </div>
+                <div class="category-item reveal-on-scroll">
+                    <div class="category-item__num">15</div>
+                    <div class="category-item__text">Комплексное<br>развитие</div>
+                    <div class="category-item__detail">
+                        <div class="category-item__detail-title">Комплексное развитие</div>
+                        <p class="category-item__detail-desc">Полный комплекс: диагностика, тренировки, питание, массаж и реабилитация. Для комплексного подхода к здоровью.</p>
+                        <ul class="category-item__detail-list"><li>Медицинская диагностика</li><li>Тренировки + питание</li><li>Массаж и реабилитация</li><li>Полный контроль результата</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="section section--contact" id="contact">
+        <h2 class="contact__title reveal-on-scroll">Готовы начать?</h2>
+        <p class="contact__subtitle reveal-on-scroll">Запишитесь на консультацию и получите персональный план</p>
+        <a href="tel:+79636780232" class="contact__phone reveal-on-scroll">8 963 678 02 32</a>
+        <div class="contact__links reveal-on-scroll">
+            <a href="https://t.me/VitalySannikov" class="contact__link" target="_blank" rel="noopener" aria-label="Написать в Telegram">Telegram</a>
+            <a href="https://vk.com/vitalysannikov" class="contact__link" target="_blank" rel="noopener" aria-label="Написать в ВКонтакте">ВКонтакте</a>
+            <a href="https://t.me/San_L1fe" class="contact__link" target="_blank" rel="noopener" aria-label="Telegram канал с примерами">Канал с примерами</a>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer__copy">© 2026 Виталий Санников. Все права защищены.</div>
+        <div class="footer__social">
+            <a href="https://t.me/VitalySannikov" target="_blank" rel="noopener" aria-label="Telegram">TG</a>
+            <a href="https://vk.com/vitalysannikov" target="_blank" rel="noopener" aria-label="ВКонтакте">VK</a>
+            <a href="https://t.me/San_L1fe" target="_blank" rel="noopener" aria-label="Telegram канал">Канал</a>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Мобильное меню" aria-hidden="true">
+        <div class="mobile-menu__close" onclick="toggleMenu()" role="button" aria-label="Закрыть меню" tabindex="0">✕</div>
+        <a href="#about" onclick="toggleMenu()">Обо мне</a>
+        <a href="#services" onclick="toggleMenu()">Услуги</a>
+        <a href="#process" onclick="toggleMenu()">Как работаю</a>
+        <a href="#gallery" onclick="toggleMenu()">Галерея</a>
+        <a href="#categories" onclick="toggleMenu()">Направления</a>
+        <a href="#testimonials" onclick="toggleMenu()">Отзывы</a>
+        <a href="#contact" onclick="toggleMenu()">Контакты</a>
+    </div>
+
+    <!-- ===== JAVASCRIPT (Часть 3) — Three.js Морфинг-форма + Scroll Reveal + Menu ===== -->
+    <script>
+// ===== PRELOADER =====
+(function(){
+    const preloader = document.getElementById('preloader');
+    const skipBtn = document.getElementById('skipBtn');
+    let closed = false;
+
+    function closePreloader() {
+        if (closed) return;
+        closed = true;
+        preloader.classList.add('hidden');
+        document.body.classList.remove('preloader-active');
+        window.removeEventListener('wheel', handleWheel, { passive: false });
+        window.removeEventListener('touchmove', handleTouch, { passive: false });
+        window.removeEventListener('touchstart', handleTouchStart, { passive: false });
+        window.removeEventListener('keydown', handleKey);
+    }
+
+    function handleWheel(e) {
+        e.preventDefault();
+        closePreloader();
+    }
+    function handleTouch(e) {
+        e.preventDefault();
+        closePreloader();
+    }
+    var touchStartY = 0;
+    function handleTouchStart(e) {
+        touchStartY = e.touches[0].clientY;
+    }
+    function handleTouchMove(e) {
+        var touchY = e.touches[0].clientY;
+        var diff = touchStartY - touchY;
+        if (Math.abs(diff) > 30) {
+            e.preventDefault();
+            closePreloader();
+        }
+    }
+    function handleKey(e) {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp' || e.key === 'PageDown' || e.key === 'PageUp' || e.key === ' ') {
+            e.preventDefault();
+            closePreloader();
+        }
+    }
+
+    skipBtn.addEventListener('click', closePreloader);
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    window.addEventListener('touchstart', handleTouchStart, { passive: false });
+    window.addEventListener('touchmove', handleTouchMove, { passive: false });
+    window.addEventListener('keydown', handleKey);
+})();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+    // ============================================================
+    // THREE.JS МОРФИНГ-ФОРМА — Золотая икосаэдрическая скульптура
+    // ============================================================
+    (function() {
+        const container = document.getElementById('threeCanvas');
+        if (!container) return;
+
+        // Check for reduced motion preference
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const isMobile = window.innerWidth < 768;
+        const isLowPower = navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4;
+
+        // Fallback for mobile / low-power / reduced-motion
+        if (isMobile && isLowPower) {
+            container.style.background = 'radial-gradient(ellipse at 50% 50%, rgba(201,162,39,0.08) 0%, transparent 70%)';
+            container.style.display = 'block';
+            return;
+        }
+
+        // Scene setup
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+        camera.position.set(0, 0, 6);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.setClearColor(0x000000, 0);
+        container.appendChild(renderer.domElement);
+
+        // ===== МОРФИНГ-ГЕОМЕТРИЯ =====
+        // Базовая форма: Icosahedron с высокой детализацией
+        const geometry = new THREE.IcosahedronGeometry(1.8, isMobile ? 2 : 4);
+        const count = geometry.attributes.position.count;
+
+        // Сохраняем оригинальные позиции для морфинга
+        const originalPositions = new Float32Array(count * 3);
+        for (let i = 0; i < count * 3; i++) {
+            originalPositions[i] = geometry.attributes.position.array[i];
+        }
+
+        // ===== КАСТОМНЫЙ ШЕЙДЕР МАТЕРИАЛА =====
+        // Золотой цвет с glow-эффектом и fresnel
+        const vertexShader = `
+            varying vec3 vNormal;
+            varying vec3 vPosition;
+            varying float vDist;
+            uniform float uTime;
+            uniform float uScroll;
+            uniform vec2 uMouse;
+
+            // Simplex noise function
+            vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+            vec4 mod289(vec4 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+            vec4 permute(vec4 x) { return mod289(((x*34.0)+1.0)*x); }
+            vec4 taylorInvSqrt(vec4 r) { return 1.79284291400159 - 0.85373472095314 * r; }
+
+            float snoise(vec3 v) {
+                const vec2 C = vec2(1.0/6.0, 1.0/3.0);
+                const vec4 D = vec4(0.0, 0.5, 1.0, 2.0);
+                vec3 i = floor(v + dot(v, C.yyy));
+                vec3 x0 = v - i + dot(i, C.xxx);
+                vec3 g = step(x0.yzx, x0.xyz);
+                vec3 l = 1.0 - g;
+                vec3 i1 = min(g.xyz, l.zxy);
+                vec3 i2 = max(g.xyz, l.zxy);
+                vec3 x1 = x0 - i1 + C.xxx;
+                vec3 x2 = x0 - i2 + C.yyy;
+                vec3 x3 = x0 - D.yyy;
+                i = mod289(i);
+                vec4 p = permute(permute(permute(
+                    i.z + vec4(0.0, i1.z, i2.z, 1.0))
+                    + i.y + vec4(0.0, i1.y, i2.y, 1.0))
+                    + i.x + vec4(0.0, i1.x, i2.x, 1.0));
+                float n_ = 0.142857142857;
+                vec3 ns = n_ * D.wyz - D.xzx;
+                vec4 j = p - 49.0 * floor(p * ns.z * ns.z);
+                vec4 x_ = floor(j * ns.z);
+                vec4 y_ = floor(j - 7.0 * x_);
+                vec4 x = x_ * ns.x + ns.yyyy;
+                vec4 y = y_ * ns.x + ns.yyyy;
+                vec4 h = 1.0 - abs(x) - abs(y);
+                vec4 b0 = vec4(x.xy, y.xy);
+                vec4 b1 = vec4(x.zw, y.zw);
+                vec4 s0 = floor(b0)*2.0 + 1.0;
+                vec4 s1 = floor(b1)*2.0 + 1.0;
+                vec4 sh = -step(h, vec4(0.0));
+                vec4 a0 = b0.xzyw + s0.xzyw*sh.xxyy;
+                vec4 a1 = b1.xzyw + s1.xzyw*sh.zzww;
+                vec3 p0 = vec3(a0.xy, h.x);
+                vec3 p1 = vec3(a0.zw, h.y);
+                vec3 p2 = vec3(a1.xy, h.z);
+                vec3 p3 = vec3(a1.zw, h.w);
+                vec4 norm = taylorInvSqrt(vec4(dot(p0,p0), dot(p1,p1), dot(p2,p2), dot(p3,p3)));
+                p0 *= norm.x; p1 *= norm.y; p2 *= norm.z; p3 *= norm.w;
+                vec4 m = max(0.6 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), 0.0);
+                m = m * m;
+                return 42.0 * dot(m*m, vec4(dot(p0,x0), dot(p1,x1), dot(p2,x2), dot(p3,x3)));
+            }
+
+            void main() {
+                vNormal = normalize(normalMatrix * normal);
+                vPosition = position;
+
+                // Noise-based displacement
+                float noise = snoise(position * 0.8 + uTime * 0.15);
+                float noise2 = snoise(position * 1.5 + uTime * 0.1);
+
+                // Scroll-driven morphing intensity
+                float morphIntensity = 0.15 + uScroll * 0.25;
+
+                // Mouse influence
+                float mouseInfluence = length(uMouse) * 0.3;
+
+                // Displacement
+                float displacement = noise * morphIntensity + noise2 * morphIntensity * 0.5;
+                displacement += mouseInfluence * 0.1;
+
+                vec3 newPosition = position + normal * displacement;
+                vDist = displacement;
+
+                gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
+            }
+        `;
+
+        const fragmentShader = `
+            varying vec3 vNormal;
+            varying vec3 vPosition;
+            varying float vDist;
+            uniform float uTime;
+            uniform float uScroll;
+
+            void main() {
+                // Fresnel effect
+                vec3 viewDirection = normalize(cameraPosition - vPosition);
+                float fresnel = pow(1.0 - dot(viewDirection, vNormal), 3.0);
+
+                // Gold color palette
+                vec3 goldCore = vec3(0.788, 0.635, 0.153);    // #c9a227
+                vec3 goldLight = vec3(0.910, 0.773, 0.278);   // #e8c547
+                vec3 goldDark = vec3(0.627, 0.490, 0.102);    // #a07d1a
+
+                // Mix colors based on noise displacement and fresnel
+                float colorMix = vDist * 3.0 + 0.5;
+                vec3 baseColor = mix(goldDark, goldCore, colorMix);
+                baseColor = mix(baseColor, goldLight, fresnel * 0.6);
+
+                // Scroll-driven glow
+                float glowIntensity = 0.3 + uScroll * 0.4;
+                baseColor += goldLight * fresnel * glowIntensity;
+
+                // Edge highlight
+                float edge = pow(fresnel, 2.0) * 0.8;
+                baseColor += vec3(1.0, 0.9, 0.6) * edge;
+
+                // Alpha based on fresnel for ethereal look
+                float alpha = 0.15 + fresnel * 0.35 + uScroll * 0.15;
+
+                gl_FragColor = vec4(baseColor, alpha);
+            }
+        `;
+
+        const material = new THREE.ShaderMaterial({
+            vertexShader: vertexShader,
+            fragmentShader: fragmentShader,
+            uniforms: {
+                uTime: { value: 0 },
+                uScroll: { value: 0 },
+                uMouse: { value: new THREE.Vector2(0, 0) }
+            },
+            transparent: true,
+            side: THREE.DoubleSide,
+            depthWrite: false,
+            blending: THREE.AdditiveBlending
+        });
+
+        const mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+
+        // Wireframe overlay для структуры
+        const wireGeo = new THREE.IcosahedronGeometry(1.82, isMobile ? 1 : 3);
+        const wireMat = new THREE.MeshBasicMaterial({
+            color: 0xc9a227,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.04,
+            blending: THREE.AdditiveBlending
+        });
+        const wireMesh = new THREE.Mesh(wireGeo, wireMat);
+        scene.add(wireMesh);
+
+        // ===== ЧАСТИЦЫ ВОКРУГ ФОРМЫ =====
+        const particlesGeo = new THREE.BufferGeometry();
+        const particlesCount = isMobile ? 80 : 200;
+        const posArray = new Float32Array(particlesCount * 3);
+        for (let i = 0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 8;
+        }
+        particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const particlesMat = new THREE.PointsMaterial({
+            color: 0xc9a227,
+            size: 0.02,
+            transparent: true,
+            opacity: 0.4,
+            blending: THREE.AdditiveBlending
+        });
+        const particles = new THREE.Points(particlesGeo, particlesMat);
+        scene.add(particles);
+
+        // ===== АНИМАЦИЯ =====
+        let scrollProgress = 0;
+        let mouseX = 0, mouseY = 0;
+        let targetMouseX = 0, targetMouseY = 0;
+
+        window.addEventListener('scroll', function() {
+            const maxScroll = document.body.scrollHeight - window.innerHeight;
+            scrollProgress = Math.min(window.scrollY / maxScroll, 1);
+        }, { passive: true });
+
+        document.addEventListener('mousemove', function(e) {
+            targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+            targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+        });
+
+        const clock = new THREE.Clock();
+
+        function animate() {
+            requestAnimationFrame(animate);
+            const elapsedTime = clock.getElapsedTime();
+
+            // Smooth mouse
+            mouseX += (targetMouseX - mouseX) * 0.05;
+            mouseY += (targetMouseY - mouseY) * 0.05;
+
+            // Update uniforms
+            material.uniforms.uTime.value = elapsedTime;
+            material.uniforms.uScroll.value = scrollProgress;
+            material.uniforms.uMouse.value.set(mouseX, mouseY);
+
+            // Rotate mesh
+            mesh.rotation.y = elapsedTime * 0.08 + mouseX * 0.3;
+            mesh.rotation.x = Math.sin(elapsedTime * 0.05) * 0.2 + mouseY * 0.2;
+
+            // Wireframe rotation
+            wireMesh.rotation.y = elapsedTime * 0.06;
+            wireMesh.rotation.x = Math.sin(elapsedTime * 0.04) * 0.15;
+
+            // Particles animation
+            particles.rotation.y = elapsedTime * 0.02;
+            particles.rotation.x = elapsedTime * 0.01;
+
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Resize
+        window.addEventListener('resize', function() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    })();
+
+    // ============================================================
+    // SCROLL REVEAL (Intersection Observer)
+    // ============================================================
+    (function() {
+        var revealElements = document.querySelectorAll('.reveal-on-scroll');
+
+        if ('IntersectionObserver' in window) {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            revealElements.forEach(function(el) {
+                observer.observe(el);
+            });
+        } else {
+            revealElements.forEach(function(el) {
+                el.classList.add('revealed');
+            });
+        }
+    })();
+
+    // ============================================================
+    // MOBILE MENU
+    // ============================================================
+    function toggleMenu() {
+        var menu = document.getElementById('mobileMenu');
+        menu.classList.toggle('active');
+        menu.setAttribute('aria-hidden', !menu.classList.contains('active'));
+    }
+
+    // Keyboard support for menu
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            var menu = document.getElementById('mobileMenu');
+            if (menu.classList.contains('active')) {
+                toggleMenu();
+            }
+        }
+    });
+
+    // ============================================================
+    // TESTIMONIALS SLIDER
+    // ============================================================
+    (function() {
+        var cards = document.querySelectorAll('.testimonial-card');
+        var dotsContainer = document.getElementById('testimonialsDots');
+        var currentIndex = 0;
+        var total = cards.length;
+        if (total === 0) return;
+
+        // Create dots
+        for (var i = 0; i < total; i++) {
+            var dot = document.createElement('button');
+            dot.className = 'testimonials__dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', 'Отзыв ' + (i + 1));
+            dot.onclick = (function(idx) {
+                return function() { goTo(idx); };
+            })(i);
+            dotsContainer.appendChild(dot);
+        }
+
+        var dots = document.querySelectorAll('.testimonials__dot');
+        var autoSlide;
+
+        function goTo(index) {
+            if (index < 0) index = total - 1;
+            if (index >= total) index = 0;
+            cards[currentIndex].classList.remove('active');
+            dots[currentIndex].classList.remove('active');
+            currentIndex = index;
+            cards[currentIndex].classList.add('active');
+            dots[currentIndex].classList.add('active');
+        }
+
+        window.nextTestimonial = function() { goTo(currentIndex + 1); };
+        window.prevTestimonial = function() { goTo(currentIndex - 1); };
+
+        function startAutoSlide() {
+            autoSlide = setInterval(function() { goTo(currentIndex + 1); }, 6000);
+        }
+        function stopAutoSlide() {
+            clearInterval(autoSlide);
+        }
+
+        startAutoSlide();
+
+        // Pause on hover
+        var slider = document.getElementById('testimonialsSlider');
+        if (slider) {
+            slider.addEventListener('mouseenter', stopAutoSlide);
+            slider.addEventListener('mouseleave', startAutoSlide);
+        }
+
+        // Touch swipe support
+        var touchStartX = 0;
+        slider.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+            stopAutoSlide();
+        }, { passive: true });
+        slider.addEventListener('touchend', function(e) {
+            var touchEndX = e.changedTouches[0].screenX;
+            var diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) goTo(currentIndex + 1);
+                else goTo(currentIndex - 1);
+            }
+            startAutoSlide();
+        }, { passive: true });
+    })();
+
+    // ============================================================
+    // CATEGORY ITEMS — tap to toggle detail on mobile
+    // ============================================================
+    (function() {
+        var items = document.querySelectorAll('.category-item');
+        items.forEach(function(item) {
+            item.addEventListener('click', function(e) {
+                if (window.innerWidth < 768) {
+                    items.forEach(function(other) {
+                        if (other !== item) other.classList.remove('active');
+                    });
+                    item.classList.toggle('active');
+                }
+            });
+        });
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.category-item')) {
+                items.forEach(function(item) { item.classList.remove('active'); });
+            }
+        });
+    })();
+
+    // ============================================================
+    // MOUSE PARALLAX ON HERO (только для athlete, не конфликтует со scroll)
+    // ============================================================
+    (function() {
+        var athlete = document.getElementById('athleteImg');
+        if (!athlete) return;
+
+        var parent = athlete.parentElement;
+        document.addEventListener('mousemove', function(e) {
+            var mouseX = (e.clientX / window.innerWidth - 0.5) * 12;
+            var mouseY = (e.clientY / window.innerHeight - 0.5) * 6;
+            parent.style.transform = 'translateX(calc(-50% + ' + mouseX + 'px)) translateY(' + mouseY + 'px)';
+        });
+    })();
+    </script>
+
+    <!-- Schema.org микроразметка -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Виталий Санников",
+      "jobTitle": "Врач-реабилитолог, фитнес-тренер, нутрициолог",
+      "telephone": "+7-963-678-02-32",
+      "url": "https://vitalysannikov.ru",
+      "sameAs": [
+        "https://t.me/VitalySannikov",
+        "https://vk.com/vitalysannikov"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Москва",
+        "addressCountry": "RU"
+      }
+    }
+    </script>
+
+</body>
+</html>
